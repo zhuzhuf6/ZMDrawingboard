@@ -1,5 +1,6 @@
 # ZMDrawingboard
-#使用 : 将ZMDrawingBoard文件夹添加到项目当中,直接饮用ZMDrawingBoard.h来创建控制器即可.
+#使用 : 将ZMDrawingBoard文件夹添加到项目当中,直接引用ZMDrawingBoard.h来创建控制器即可.
+#借用了修改后的MBProgressHUD来作为提示窗口
 #1.基本的绘图功能;
 #2.可以修改画笔粗细及颜色;
 #3.拥用保存/返回/删除功能;
