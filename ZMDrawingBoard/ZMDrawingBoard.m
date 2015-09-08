@@ -122,6 +122,12 @@ typedef enum {
     // 设置toolbar
     [self setUpToolBar];
     
+    // 设置子控件属性
+    [self setUpSubViews];
+    
+}
+
+- (void)setUpSubViews {
     // 设置界面的属性
     self.settingView.backgroundColor = [UIColor whiteColor];
     self.settingView.bounces = NO;
@@ -145,11 +151,10 @@ typedef enum {
     self.fontView.pathInfo = self.pathInfo;
     self.colorView.pathInfo = self.pathInfo;
     
-    self.fontView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.3];
-    self.colorView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.3];
+    self.fontView.backgroundColor = [UIColor colorWithWhite:0.99 alpha:1];
+    self.colorView.backgroundColor = [UIColor colorWithWhite:0.99 alpha:1];
     
     self.isSave = YES;
-    
 }
 
 - (void)setUpToolBar
@@ -217,6 +222,11 @@ typedef enum {
     UIImage *newImage = [drawingView saveImage];
     UIImageWriteToSavedPhotosAlbum(newImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
+
+- (UIImage *)getImage{
+    return [(ZMDrawingView *)self.view saveImage];
+}
+
 // 反馈保存图片成功或者时失败
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
