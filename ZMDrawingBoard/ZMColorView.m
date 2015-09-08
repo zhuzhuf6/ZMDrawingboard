@@ -33,11 +33,7 @@
     if (!_redSlider) {
         UISlider *slider = [[UISlider alloc] init];
         _redSlider = slider;
-        // 设置滑动范围
-        _redSlider.minimumValue = 0;
-        _redSlider.maximumValue = 255;
-        // 添加点击事件
-        [_redSlider addTarget:self action:@selector(changeFixColor:) forControlEvents:UIControlEventValueChanged];
+        [self setSlider:_redSlider];
         // 设置tag
         _redSlider.tag = ColorElementRed;
         [self addSubview:_redSlider];
@@ -49,11 +45,7 @@
     if (!_greenSlider) {
         UISlider *slider = [[UISlider alloc] init];
         _greenSlider = slider;
-        // 设置滑动范围
-        _greenSlider.minimumValue = 0;
-        _greenSlider.maximumValue = 255;
-        // 添加点击事件
-        [_greenSlider addTarget:self action:@selector(changeFixColor:) forControlEvents:UIControlEventValueChanged];
+        [self setSlider:_greenSlider];
         // 设置tag
         _greenSlider.tag = ColorElementGreen;
         [self addSubview:_greenSlider];
@@ -65,11 +57,7 @@
     if (!_blueSlider) {
         UISlider *slider = [[UISlider alloc] init];
         _blueSlider = slider;
-        // 设置滑动范围
-        _blueSlider.minimumValue = 0;
-        _blueSlider.maximumValue = 255;
-        // 添加点击事件
-        [_blueSlider addTarget:self action:@selector(changeFixColor:) forControlEvents:UIControlEventValueChanged];
+        [self setSlider:_blueSlider];
         // 设置tag
         _blueSlider.tag = ColorElementBlue;
         [self addSubview:_blueSlider];
@@ -82,15 +70,23 @@
         UISlider *slider = [[UISlider alloc] init];
         _alphaSlider = slider;
         // 设置滑动范围
-        _alphaSlider.minimumValue = 0;
+        [self setSlider:_alphaSlider];
+        // 透明度是0~1所以需要重新设置为100
         _alphaSlider.maximumValue = 100;
-        // 添加点击事件
-        [_alphaSlider addTarget:self action:@selector(changeFixColor:) forControlEvents:UIControlEventValueChanged];
         // 设置tag
         _alphaSlider.tag = ColorElementAlpha;
         [self addSubview:_alphaSlider];
     }
     return _alphaSlider;
+}
+
+// 设置滑块的属性,优化代码
+- (void)setSlider:(UISlider *)slider {
+    // 设置滑动范围
+    slider.minimumValue = 0;
+    slider.maximumValue = 255;
+    // 添加点击事件
+    [slider addTarget:self action:@selector(changeFixColor:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (UIButton *)fixColorButton{
