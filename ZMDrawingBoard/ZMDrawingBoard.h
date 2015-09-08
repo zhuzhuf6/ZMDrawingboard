@@ -16,4 +16,6 @@
 - (void)removeCancelItem;
 /** 取消绘制 **/
 - (void)cancelDrawing;
+/** 获取绘制的图片 **/
+- (UIImage *)getImage;
 @end
